@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+注意:
+     mapper.xml一定要在主配置文件中注册
+-->
+
+<!--绑定对应的接口(全类名)   注意:必须使用 . -->
+<mapper namespace="dao.UserMapper">
+    <!-- #{}是经过预编译的，是安全的；${}是未经过预编译的，仅仅是取变量的值，是非安全的，存在SQL注入-->
+
+    <!--绑定接口中对应的方法(id)   参数类型(parameterType)  返回值类型(resultType)  注意:集合需要返回对应的实体类  -->
+
+    <select id="getUserList" resultType="pojo.User">
+        <!--编写sql语句-->
+        select * from mybatis.user;
+    </select>
+
+    <select id="getUserByID" parameterType="int" resultType="pojo.User">
+        select *
+        from mybatis.user
+        where id = #{id};
+    </select>
+
+    <insert id="addUser" parameterType="pojo.User">
+        insert into mybatis.user
+            value (#{id}, #{name}, #{pwd});
+    </insert>
+
+    <delete id="deleteUserByID" parameterType="int">
+        delete
+        from mybatis.user
+        where id = #{id};
+    </delete>
+
+    <update id="modifyUserByID" parameterType="pojo.User">
+        update mybatis.user
+        set name=#{name},
+            pwd=#{pwd}
+        where id = #{id};
+    </update>
+
+    <!--
+    万能的map
+    -->
+    <update id="modifyPwdByID" parameterType="map">
+        update mybatis.user
+        set pwd=#{pwd}
+        where id = #{id};
+    </update>
+
+    <!--
+    模糊查询
+        在xml中的sql语句中进行拼串   name like concat('%', #{name}, '%')
+    -->
+    <select id="getUserByName" parameterType="String" resultType="pojo.User">
+        select *
+        from mybatis.user
+        where name like concat('%', #{name}, '%');
+    </select>
+
+</mapper>
