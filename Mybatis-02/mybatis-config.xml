@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+
+<!--核心配置文件-->
+<configuration>
+
+
+    <!--  引入外部的配置文件 mysql.properties  -->
+    <properties resource="mysql.properties">
+        <!--内部配置-->
+        <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+    </properties>
+
+
+    <!--类型别名-->
+    <typeAliases>
+
+        <!--给类起别名            适用于实体类较少  parameterType可以自定义-->
+        <!--  <typeAlias type="pojo.User" alias="user"></typeAlias>-->
+
+        <!--给包起别名 (扫描包)    适用于实体类较多  parameterType默认为类名小写  自定义需要注解:@Alias("user")  -->
+        <package name="pojo"/>
+
+        <!--
+        Java 类型内建的类型别名
+        基本类型 _int ......
+        引用数据类型  iInteger  Integer ......
+        -->
+
+    </typeAliases>
+
+
+    <!--连接数据库环境-->
+    <environments default="configuration-1">
+
+        <!--  可以有多套配置环境       通过   default  id   的值来控制      每次只能选择一个环境   -->
+        <environment id="configuration-1">
+
+            <!-- 事务管理器  { JDBC , MANAGED } JDBC提交事物的回滚与提交 -->
+            <transactionManager type="JDBC"/>
+
+            <!-- 数据源   UNPOILED  POOLED  JNDI -->
+            <dataSource type="POOLED">
+
+                <!--配置的值
+                  1.写在当前文件中
+                  2.写在properties中property标签中
+                  3.利用properties引入外部配置文件
+                 -->
+
+                <!--mysql驱动-->
+                <property name="driver" value="${driver}"/>
+                <!--连接url-->
+                <property name="url" value="${url}"/>
+                <!--数据库name-->
+                <property name="username" value="${user}"/>
+                <!--数据库密码-->
+                <property name="password" value="${password}"/>
+
+            </dataSource>
+
+        </environment>
+
+        <environment id="configuration-2">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url"
+                          value="jdbc:mysql://localhost:3306/mybatis?useSSL=true&amp;useUnicode=true&amp;characterEncoding=utf8&amp;serverTimezone=UTC&amp;rewriteBatchedStatements=true"/>
+                <property name="username" value="root"/>
+                <property name="password" value="bsy8023.00"/>
+            </dataSource>
+        </environment>
+
+    </environments>
+
+
+    <!--映射器 mappers-->
+    <mappers>
+
+        <!--使用相对于类路径的资源引u用            注意:必须使用 /-->
+        <!--        <mapper resource="dao/serMapper.xml"/>   -->
+
+        <!--使用映射器接口实现类的完全限定类名     注意:接口和mapper配置文件必须同名且在一共包下 -->
+        <!--        <mapper class="dao.UserMapper"/>-->
+
+        <!--将包内的映射器接口实现全部注册为映射器  注意:接口和mapper配置文件必须同名且在一共包下 -->
+        <package name="dao"/>
+
+    </mappers>
+
+
+</configuration>
