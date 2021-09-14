@@ -47,7 +47,8 @@ public class MybatisUtils {
      * SqlSession 提供了在数据库执行 SQL 命令所需的所有方法
      */
     public static SqlSession getSqlSession() {
-        return sqlSessionFactory.openSession();
+        return sqlSessionFactory.openSession();         //默认为false
+        //return sqlSessionFactory.openSession(true);   自动提交事物
     }
 
 }
