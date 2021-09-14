@@ -9,11 +9,8 @@
     <!--  引入外部的配置文件 mysql.properties  -->
     <properties resource="mysql.properties"/>
 
-    <settings>
-        <!--日志工厂-->
-        <!--STDOUT_LOGGING标准日志输出-->
-        <!--        <setting name="logImpl" value="STDOUT_LOGGING"/>        -->
-        <setting name="logImpl" value="LOG4J"/>
+     <settings>
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
     </settings>
 
     <!--连接数据库环境-->
