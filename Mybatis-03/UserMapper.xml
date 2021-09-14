@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="dao.UserMapper">
+
+    <!--解决数据库的字段与对象的属性名不不同的问题 resultMap -->
+    <!--    column数据库中的字段    property实体类中的属性    -->
+    <resultMap id="userMap" type="user">
+        <!--哪个不同设置哪个-->
+        <result column="pwd" property="password"></result>
+    </resultMap>
+
+
+    <select id="getUserList" resultMap="userMap">
+        select *
+        from mybatis.user;
+    </select>
+
+    <!--limit实现分页  sql层-->
+    <select id="getUserListLimit" parameterType="map" resultMap="userMap">
+        select *
+        from mybatis.user
+        limit #{startIndex} , #{pageSize};
+    </select>
+
+    <!--RowBounds实现分页   面向对象层-->
+    <select id="getUserListRowBounds" resultMap="userMap">
+        select *
+        from mybatis.user;
+    </select>
+
+
+</mapper>
