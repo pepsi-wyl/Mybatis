@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dao.BlogMapper">
+
+
+    <!--插入数据-->
+    <insert id="addBlog" parameterType="Blog">
+        insert into mybatis.blog(id, title, author, create_time, views)
+        values (#{id}, #{title}, #{author}, #{createTime}, #{views});
+    </insert>
+
+
+    <!--
+    按照条件查询数据   IF   WHERE
+    支持模糊查询
+    -->
+    <!--
+    sql片段抽取公用部分 复用
+    最好基于单表查询  不要存在where标签
+    -->
+    <sql id="if-title-author">
+        <if test="title != null">and title like concat('%', #{title}, '%')</if>
+        <if test="author != null">and author like concat('%', #{author}, '%')</if>
+    </sql>
+    <select id="getBlogIF" parameterType="map" resultType="Blog">
+
+        <!--不规范-->
+        <!--        select * from mybatis.blog where 1=1-->
+        <!--        <if test="title!=null">and title like concat('%', #{title}, '%')</if>-->
+        <!--        <if test="author!=null">and author like concat('%', #{author}, '%')</if>-->
+
+        select * from mybatis.blog
+        <where>
+            <!--引入sql片段-->
+            <include refid="if-title-author"/>
+        </where>
+
+    </select>
+
+
+    <!--
+    按照条件查询数据   CHOOSE   WHERE
+    支持模糊查询
+    #类似与switch语句   匹配则退出
+    -->
+    <select id="getBlogCHOOSE" parameterType="map" resultType="Blog">
+        select * from mybatis.blog
+        <where>
+            <choose>
+                <when test="title!=null">and title like concat('%', #{title}, '%')</when>
+                <when test="author!=null">and author like concat('%', #{author}, '%')</when>
+                <otherwise>and views=#{views}</otherwise>
+            </choose>
+        </where>
+    </select>
+
+
+    <!--
+    按照条件修改数据   SET
+    -->
+    <update id="updateBlogSET" parameterType="map">
+        update mybatis.blog
+        <set>
+            <if test="title!=null">title=#{title},</if>
+            <if test="author!=null">author=#{author},</if>
+        </set>
+        where id=#{id}
+    </update>
+
+
+    <!--
+    查询第 1- 2- 3 号记录的博客
+    Foreach
+    -->
+    <select id="getBlogForeach" parameterType="map" resultType="Blog">
+        select * from mybatis.blog
+        <where>
+            <foreach collection="ids" item="id" open="(" separator="or" close=")">
+                id=#{id}
+            </foreach>
+        </where>
+    </select>
+
+
+    <!--
+    trim (WHERE SET)
+    <trim prefix="SET" suffixOverrides=""></trim>      后缀
+    <trim prefix="WHERE" prefixOverrides=""></trim>    前缀
+    -->
+
+</mapper>
