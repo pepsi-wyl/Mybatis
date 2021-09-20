@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.UserMapper">
+
+    <!--在当前的Mapper.xml中开启二级缓存-->
+    <!--<cache/>  pojo类需要序列化 -->
+    <!--自定义-->
+    <!--<cache eviction="FIFO" flushInterval="60000" size="512" readOnly="true"/>-->
+    <!--FIFO缓存  60s刷新一次  最多存储512个引用  返回的对象为只读-->
+    <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>
+
+    <!--useCache="true"-->
+    <select id="getUserByID" resultType="user">
+        select *
+        from mybatis.user
+        where id = #{id};
+    </select>
+
+    <!--flushCache="false"-->
+    <update id="updateByID" parameterType="user">
+        update mybatis.user
+        set name=#{name},
+            pwd=#{pwd}
+        where id = #{id};
+    </update>
+
+</mapper>
