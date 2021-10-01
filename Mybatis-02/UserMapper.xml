@@ -14,7 +14,7 @@
 
     <!--绑定接口中对应的方法(id)   参数类型(parameterType)  返回值类型(resultType)  注意:集合需要返回对应的实体类  -->
 
-    <select id="getUserList" resultType="user">
+    <select id="getUserList" resultType="user" databaseId="mysql">
     <!--编写sql语句-->
     select * from mybatis.user;
     </select>
