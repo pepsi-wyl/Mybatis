@@ -22,17 +22,6 @@ import java.util.List;
 
 public class T {
 
-    private static Logger logger = Logger.getLogger(T.class);
-
-    @Test
-    public void query_T() {
-        SqlSession sqlSession = MybatisUtils.getSqlSession();
-        logger.info(sqlSession);
-        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
-        List<User> userList = userMapper.getUserList();
-        userList.forEach((v) -> System.out.println(v));
-        sqlSession.close();
-    }
 
     @Test
     public void queryLimit_T() {
