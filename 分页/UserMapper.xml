@@ -14,12 +14,7 @@
         <!--哪个不同设置哪个-->
         <result column="pwd" property="password"></result>
     </resultMap>
-
-
-    <select id="getUserList" resultMap="userMap">
-        select *
-        from mybatis.user;
-    </select>
+        
 
     <!--limit实现分页  sql层-->
     <select id="getUserListLimit" parameterType="map" resultMap="userMap">
