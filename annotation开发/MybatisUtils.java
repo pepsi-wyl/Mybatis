@@ -38,7 +38,11 @@ public class MybatisUtils {
      */
     public static SqlSession getSqlSession() {
         return sqlSessionFactory.openSession();        //默认为false
+        
+       
         //return sqlSessionFactory.openSession(true);  为自动提交
+        
+        
     }
 
 }
