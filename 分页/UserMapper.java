@@ -13,12 +13,6 @@ import java.util.Map;
 public interface UserMapper {
 
     /**
-     * 得到全部用户集合
-     */
-    List<User> getUserList();
-
-
-    /**
      * 分页得到全部用户集合
      */
     List<User> getUserListLimit(Map<String, Object> map);
