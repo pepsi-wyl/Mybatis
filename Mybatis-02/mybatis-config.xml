@@ -10,56 +10,62 @@
 
     <!--  引入外部的配置文件 mysql.properties  -->
     <properties resource="mysql.properties">
+
         <!--内部配置-->
         <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+
+        <!--    启动为占位符指定一个默认值    -->
+        <property name="org.apache.ibatis.parsing.PropertyParser.enable-default-value"
+                  value="true"/>
+        <!--    修改默认分割符号  默认为:  -->
+        <property name="org.apache.ibatis.parsing.PropertyParser.default-value-separator"
+                  value="?:"/> <!-- 修改默认值的分隔符 -->
+
     </properties>
 
 
-    <!--类型别名-->
+    <settings>
+        <!--日志工厂-->
+        <!--STDOUT_LOGGING标准日志输出-->
+        <!--        <setting name="logImpl" value="STDOUT_LOGGING"/>        -->
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
+
+
+    <!--类型别名 降低冗余的全限定类名书写-->
     <typeAliases>
-
-        <!--给类起别名            适用于实体类较少  parameterType可以自定义-->
-        <!--  <typeAlias type="pojo.User" alias="user"></typeAlias>-->
-
-        <!--给包起别名 (扫描包)    适用于实体类较多  parameterType默认为类名小写  自定义需要注解:@Alias("user")  -->
-        <package name="pojo"/>
-
         <!--
         Java 类型内建的类型别名
-        基本类型 _int ......
-        引用数据类型  iInteger  Integer ......
+        基本类型      int       _int    ......
+        引用数据类型   Integer   integer ......
         -->
-
+        <!--给类起别名            适用于实体类较少     parameterType可以自定义  -->
+        <!--  <typeAlias type="pojo.User" alias="user"></typeAlias>-->
+        <!--给包起别名 (扫描包)    适用于实体类较多     parameterType默认为类名小写    自定义需要注解:@Alias("user")  -->
+        <package name="pojo"/>
     </typeAliases>
 
 
     <!--连接数据库环境-->
     <environments default="configuration-1">
-
-        <!--  可以有多套配置环境       通过   default  id   的值来控制      每次只能选择一个环境   -->
+        <!--  可以有多套配置环境       通过   default <-> id   的值来控制      每次只能选择一个环境   -->
         <environment id="configuration-1">
 
             <!-- 事务管理器  { JDBC , MANAGED } JDBC提交事物的回滚与提交 -->
             <transactionManager type="JDBC"/>
 
             <!-- 数据源   UNPOILED  POOLED  JNDI -->
-            <dataSource type="POOLED">
-
+            <dataSource type="POOLED">   <!--池子-->
                 <!--配置的值
                   1.写在当前文件中
                   2.写在properties中property标签中
                   3.利用properties引入外部配置文件
+                  4:配置默认值  MyBatis 3.4.2          需要在properties启用这个特性   分割符号可自定义
                  -->
-
-                <!--mysql驱动-->
-                <property name="driver" value="${driver}"/>
-                <!--连接url-->
-                <property name="url" value="${url}"/>
-                <!--数据库name-->
-                <property name="username" value="${user}"/>
-                <!--数据库密码-->
-                <property name="password" value="${password}"/>
-
+                <property name="driver" value="${driver?:com.mysql.cj.jdbc.Driver}"/>    <!--mysql驱动-->
+                <property name="url" value="${url}"/>     <!--连接url-->
+                <property name="username" value="${user?:root}"/>    <!--数据库name-->
+                <property name="password" value="${password}"/>   <!--数据库密码-->
             </dataSource>
 
         </environment>
@@ -78,19 +84,21 @@
     </environments>
 
 
-    <!--映射器 mappers-->
+    <!--   数据库厂商标识（databaseIdProvider）  可以根据不同的数据库厂商执行不同的语句   在Mapper.xml文件中配置     databaseId="mysql"  databaseId="oracle"  -->
+    <databaseIdProvider type="DB_VENDOR">
+        <property name="MySQL" value="mysql"/>
+        <property name="Oracle" value="oracle"/>
+    </databaseIdProvider>
+
+
+    <!--映射器 mappers    告诉 MyBatis 到哪里去找映射文件 -->
     <mappers>
-
-        <!--使用相对于类路径的资源引u用            注意:必须使用 /-->
+        <!--使用相对于类路径的资源引用            注意:必须使用 / -->
         <!--        <mapper resource="dao/serMapper.xml"/>   -->
-
-        <!--使用映射器接口实现类的完全限定类名     注意:接口和mapper配置文件必须同名且在一共包下 -->
+        <!--使用映射器接口实现类的完全限定类名      注意:接口和mapper配置文件必须同名且在一共包下 -->
         <!--        <mapper class="dao.UserMapper"/>-->
-
-        <!--将包内的映射器接口实现全部注册为映射器  注意:接口和mapper配置文件必须同名且在一共包下 -->
+        <!--将包内的映射器接口实现全部注册为映射器   注意:接口和mapper配置文件必须同名且在一共包下 -->
         <package name="dao"/>
-
     </mappers>
-
 
 </configuration>
