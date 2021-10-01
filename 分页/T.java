@@ -28,8 +28,8 @@ public class T {
         SqlSession sqlSession = MybatisUtils.getSqlSession();
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
         HashMap<String, Object> map = new HashMap<>();
-        map.put("startIndex", 0);
-        map.put("pageSize", 2);
+        map.put("pageSize", 2);              
+        map.put("startIndex", 4*(int)map.get("pageSize"));       
         List<User> userListLimit = mapper.getUserListLimit(map);
         userListLimit.forEach((v) -> System.out.println(v));
         sqlSession.close();
