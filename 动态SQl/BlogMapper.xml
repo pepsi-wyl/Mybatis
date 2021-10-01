@@ -6,17 +6,20 @@
 <mapper namespace="dao.BlogMapper">
 
 
+    <!--
+    trim (WHERE SET)
+    <trim prefix="SET" suffixOverrides=","></trim>      后缀
+    <trim prefix="WHERE" prefixOverrides="AND |OR "></trim>    前缀
+    -->
+
+
     <!--插入数据-->
-    <insert id="addBlog" parameterType="Blog">
+    <insert id="addBlog" parameterType="Blog" statementType="PREPARED">
         insert into mybatis.blog(id, title, author, create_time, views)
         values (#{id}, #{title}, #{author}, #{createTime}, #{views});
     </insert>
 
 
-    <!--
-    按照条件查询数据   IF   WHERE
-    支持模糊查询
-    -->
     <!--
     sql片段抽取公用部分 复用
     最好基于单表查询  不要存在where标签
@@ -25,6 +28,11 @@
         <if test="title != null">and title like concat('%', #{title}, '%')</if>
         <if test="author != null">and author like concat('%', #{author}, '%')</if>
     </sql>
+
+    <!--
+    按照条件查询数据   IF   WHERE
+    支持模糊查询
+    -->
     <select id="getBlogIF" parameterType="map" resultType="Blog">
 
         <!--不规范-->
@@ -34,15 +42,14 @@
 
         select * from mybatis.blog
         <where>
-            <!--引入sql片段-->
-            <include refid="if-title-author"/>
+            <include refid="if-title-author"/>   <!--引入sql片段-->
         </where>
 
     </select>
 
 
     <!--
-    按照条件查询数据   CHOOSE   WHERE
+    按照条件查询数据   CHOOSE  WHEN OTHERWISE       - WHERE
     支持模糊查询
     #类似与switch语句   匹配则退出
     -->
@@ -78,17 +85,14 @@
     <select id="getBlogForeach" parameterType="map" resultType="Blog">
         select * from mybatis.blog
         <where>
-            <foreach collection="ids" item="id" open="(" separator="or" close=")">
+            <foreach collection="ids" item="id"
+                     open="(" separator="or" close=")">
                 id=#{id}
             </foreach>
         </where>
     </select>
 
 
-    <!--
-    trim (WHERE SET)
-    <trim prefix="SET" suffixOverrides=""></trim>      后缀
-    <trim prefix="WHERE" prefixOverrides=""></trim>    前缀
-    -->
-
 </mapper>
+
+
