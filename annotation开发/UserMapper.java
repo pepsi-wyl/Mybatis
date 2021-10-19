@@ -10,11 +10,12 @@ import java.util.List;
  *
  * @author by wyl
  * @date 2021/9/14 10点45分
+ * 适合简单的sql语句  复杂的SQL语句建议写xml文件
  */
 
 /**
 
-   适合简单的sql语句
+   
     
  * 注解编写SQL语句
  * @Param 设置属性名称  在sql语句中引用
