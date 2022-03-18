@@ -2,14 +2,11 @@ Mybtais  文档
 
 ---
 
-
-
+[点击查看【bilibili】](https://player.bilibili.com/player.html?bvid=BV1NE411Q7Nx)
 
 ---
 
-<a name="ryfN6"></a>
 # 简介
-<a name="zjekp"></a>
 ## 什么是Mybatis
 
 - Mybatis是一个优秀的持久层框架
@@ -18,11 +15,9 @@ Mybtais  文档
 - MyBatis 可以通过简单的 XML 或注解来配置和映射原始类型、接口和 Java POJO（Plain Old Java Objects，普通老式 Java 对象）为数据库中的记录。
 - Mybatis本是apache的一个开源项目iBatis。2010年这个项目有apache software foundation 迁移到了google code，更名为Mybatis
 - 2013年11月迁移到GitHub
-<a name="KBymg"></a>
 # 入门   
-<a name="YYzqH"></a>
 ## 安装
-在pom.xml中导入mysql驱动
+在pom.xml中导入mysql的驱动 
 ```xml
 <dependency>
       <groupId>mysql</groupId>
@@ -75,8 +70,8 @@ Mybtais  文档
         </resources>
     </build>
 ```
-推荐使用Idea安装MybatisX插件 可以完成Mapper层java代码与xml代码的跳转<br />![569c23e2e21e430a3c373c3be8fe8a1.png](https://cdn.nlark.com/yuque/0/2021/png/23219042/1640955466239-80ca7213-b6db-4070-9314-f01da976106a.png#crop=0&crop=0&crop=1&crop=1&height=73&id=uf057e7ee&margin=%5Bobject%20Object%5D&name=569c23e2e21e430a3c373c3be8fe8a1.png&originHeight=73&originWidth=332&originalType=binary&ratio=1&rotation=0&showTitle=false&size=4486&status=done&style=none&title=&width=332)![e6c263b5c967d84241174d24909cf26.png](https://cdn.nlark.com/yuque/0/2021/png/23219042/1640955543102-a64221e3-8ce6-4e6f-aa10-5d6ecca1f8a2.png#crop=0&crop=0&crop=1&crop=1&height=73&id=u5ceca1da&margin=%5Bobject%20Object%5D&name=e6c263b5c967d84241174d24909cf26.png&originHeight=64&originWidth=193&originalType=binary&ratio=1&rotation=0&showTitle=false&size=12145&status=done&style=none&title=&width=219)
-<a name="jQ54L"></a>
+推荐使用Idea安装MybatisX插件 可以完成Mapper层java代码与xml代码的跳转
+![569c23e2e21e430a3c373c3be8fe8a1.png](https://cdn.nlark.com/yuque/0/2021/png/23219042/1640955466239-80ca7213-b6db-4070-9314-f01da976106a.png#crop=0&crop=0&crop=1&crop=1&height=73&id=uf057e7ee&margin=%5Bobject%20Object%5D&name=569c23e2e21e430a3c373c3be8fe8a1.png&originHeight=73&originWidth=332&originalType=binary&ratio=1&rotation=0&showTitle=false&size=4486&status=done&style=none&title=&width=332)![e6c263b5c967d84241174d24909cf26.png](https://cdn.nlark.com/yuque/0/2021/png/23219042/1640955543102-a64221e3-8ce6-4e6f-aa10-5d6ecca1f8a2.png#crop=0&crop=0&crop=1&crop=1&height=73&id=u5ceca1da&margin=%5Bobject%20Object%5D&name=e6c263b5c967d84241174d24909cf26.png&originHeight=64&originWidth=193&originalType=binary&ratio=1&rotation=0&showTitle=false&size=12145&status=done&style=none&title=&width=219)
 ## 编写XML配置文件
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -129,7 +124,6 @@ Mybtais  文档
 
 </configuration>
 ```
-<a name="JdzRH"></a>
 ## 编写MybatisUtils
 ```java
 package utils;
@@ -210,7 +204,6 @@ public class MybatisUtils {
 
 }
 ```
-<a name="fdDN9"></a>
 ## 编写Pojo层实体类
 ```java
 package pojo;
@@ -238,9 +231,7 @@ public class User {
     private String pwd;
 }
 ```
-<a name="fUiqo"></a>
 ## 编写Mapper层
-<a name="r6lHn"></a>
 ### UserMapper.java
 ```java
 package mapper;
@@ -285,7 +276,6 @@ public interface UserMapper{
 }
 
 ```
-<a name="ylHOR"></a>
 ### UserMapper.xml
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -338,7 +328,6 @@ public interface UserMapper{
 </mapper>
 
 ```
-<a name="QBjhh"></a>
 ## 测试
 ```java
 import mapper.UserMapper;
@@ -406,9 +395,7 @@ public class T {
 }
 
 ```
-<a name="NDLX4"></a>
 ## 秀一波
-<a name="M2Dl3"></a>
 ### 万能的map
 Mapper接口
 ```java
@@ -448,7 +435,6 @@ xml配置sql代码
         MybatisUtils.closeSqlSession();
     }
 ```
-<a name="o4ZYp"></a>
 ### 模糊查询
 Mapper接口
 ```java
@@ -488,9 +474,7 @@ xml配置sql代码
         MybatisUtils.closeSqlSession();
     }
 ```
-<a name="kFJZC"></a>
 ### 分页查询
-<a name="vqIiH"></a>
 #### Limit实现分页
 Mapper接口
 ```java
@@ -524,7 +508,6 @@ xml配置sql代码
         sqlSession.close();
     }
 ```
-<a name="dS8Kc"></a>
 #### RowBounds实现分页
 Mapper接口
 ```java
@@ -551,17 +534,24 @@ xml配置sql代码
         sqlSession.close();
     }
 ```
-<a name="cBavC"></a>
 ## 其他
-<a name="GEfD2"></a>
 ### 作用域(Scoope)和生命周期
-SqlSessionFactoryBuilder <br />这个类可以被实例化、使用和丢弃，一旦创建了 SqlSessionFactory，就不再需要它了。 因此 SqlSessionFactoryBuilder 实例的最佳作用域是方法作用域（也就是局部方法变量）。 你可以重用 SqlSessionFactoryBuilder 来创建多个 SqlSessionFactory 实例，但最好还是不要一直保留着它，以保证所有的 XML 解析资源可以被释放给更重要的事情。<br />SqlSessionFactory<br />SqlSessionFactory 一旦被创建就应该在应用的运行期间一直存在，没有任何理由丢弃它或重新创建另一个实例。 使用 SqlSessionFactory 的最佳实践是在应用运行期间不要重复创建多次，多次重建 SqlSessionFactory 被视为一种代码“坏习惯”。因此 SqlSessionFactory 的最佳作用域是应用作用域。 有很多方法可以做到，最简单的就是使用单例模式或者静态单例模式。<br />SqlSession<br />每个线程都应该有它自己的 SqlSession 实例。SqlSession 的实例不是线程安全的，因此是不能被共享的，所以它的最佳的作用域是请求或方法作用域。 绝对不能将 SqlSession 实例的引用放在一个类的静态域，甚至一个类的实例变量也不行。 也绝不能将 SqlSession 实例的引用放在任何类型的托管作用域中，比如 Servlet 框架中的 HttpSession。 如果你现在正在使用一种 Web 框架，考虑将 SqlSession 放在一个和 HTTP 请求相似的作用域中。 换句话说，每次收到 HTTP 请求，就可以打开一个 SqlSession，返回一个响应后，就关闭它。 <br />_/**<br /> * 生命周期<br /> * SqlSessionFactoryBuilder    创建sqlSessionFactory                    匿名对象<br /> * sqlSessionFactory               创建SqlSession                               单例模式，静态单例模式          数据库连接池<br /> * SqlSession                          getMapper(连接连接池的请求)       线程不安全，用完就要关闭        一次连接<br /> * Mapper                                                                                    执行数据库的一次操作<br /> */_
-<a name="wJt8t"></a>
+SqlSessionFactoryBuilder 
+这个类可以被实例化、使用和丢弃，一旦创建了 SqlSessionFactory，就不再需要它了。 因此 SqlSessionFactoryBuilder 实例的最佳作用域是方法作用域（也就是局部方法变量）。 你可以重用 SqlSessionFactoryBuilder 来创建多个 SqlSessionFactory 实例，但最好还是不要一直保留着它，以保证所有的 XML 解析资源可以被释放给更重要的事情。
+SqlSessionFactory
+SqlSessionFactory 一旦被创建就应该在应用的运行期间一直存在，没有任何理由丢弃它或重新创建另一个实例。 使用 SqlSessionFactory 的最佳实践是在应用运行期间不要重复创建多次，多次重建 SqlSessionFactory 被视为一种代码“坏习惯”。因此 SqlSessionFactory 的最佳作用域是应用作用域。 有很多方法可以做到，最简单的就是使用单例模式或者静态单例模式。
+SqlSession
+每个线程都应该有它自己的 SqlSession 实例。SqlSession 的实例不是线程安全的，因此是不能被共享的，所以它的最佳的作用域是请求或方法作用域。 绝对不能将 SqlSession 实例的引用放在一个类的静态域，甚至一个类的实例变量也不行。 也绝不能将 SqlSession 实例的引用放在任何类型的托管作用域中，比如 Servlet 框架中的 HttpSession。 如果你现在正在使用一种 Web 框架，考虑将 SqlSession 放在一个和 HTTP 请求相似的作用域中。 换句话说，每次收到 HTTP 请求，就可以打开一个 SqlSession，返回一个响应后，就关闭它。 
+_/**
+ * 生命周期
+ * SqlSessionFactoryBuilder    创建sqlSessionFactory                    匿名对象
+ * sqlSessionFactory               创建SqlSession                               单例模式，静态单例模式          数据库连接池
+ * SqlSession                          getMapper(连接连接池的请求)       线程不安全，用完就要关闭        一次连接
+ * Mapper                                                                                    执行数据库的一次操作
+ */_
 ### 映射器
      映射器是一些绑定映射语句的接口。映射器接口的实例是从 SqlSession 中获得的。虽然从技术层面上来讲，任何映射器实例的最大作用域与请求它们的 SqlSession 相同。但方法作用域才是映射器实例的最合适的作用域。 也就是说，映射器实例应该在调用它们的方法中被获取，使用完毕之后即可丢弃。 映射器实例并不需要被显式地关闭。尽管在整个请求作用域保留映射器实例不会有什么问题，但是你很快会发现，在这个作用域上管理太多像 SqlSession 的资源会让你忙不过来。
-<a name="rg98W"></a>
 # 注解开发
-<a name="oNfXJ"></a>
 ## 注解实现CRUD
 Mapper接口    
 ```java
@@ -627,19 +617,16 @@ public interface UserMapper {
     @Select("select * from user where id=#{UserId};")
     User getUserByID(@Param("UserId") int id);
 ```
-<a name="qUNrE"></a>
 # 配置
-<a name="KWDWD"></a>
 ## 属性(propserties)
-<a name="o3fZ3"></a>
 ### 配置和使用属性
 编写mysql.properties数据库配置文件(将连接数据库的参数写入配置文件中)
 ```properties
 #mysql.propserties
 driver=com.mysql.cj.jdbc.Driver
 user=root
-password=bsy8023.00
-url=jdbc:mysql://localhost:3306/mybatis?useSSL=true&useUnicode=true&characterEncoding=utf8&serverTimezone=UTC&rewriteBatchedStatements=true
+password=XXXXXX
+url=jdbc:mysql://x.x.x.x:3306/mybatis?useSSL=true&useUnicode=true&characterEncoding=utf8&serverTimezone=UTC&rewriteBatchedStatements=true
 ```
 配置属性 （从Mybatis3.4.2开始为这占位符指定默认值）
 ```java
@@ -675,7 +662,6 @@ url=jdbc:mysql://localhost:3306/mybatis?useSSL=true&useUnicode=true&characterEnc
        <property name="password" value="${password}"/>   <!--数据库密码-->
 </dataSource>
 ```
-<a name="JlNIb"></a>
 ### 注意   
 一个属性在多个地方配置，加载顺序为
 
@@ -684,10 +670,8 @@ url=jdbc:mysql://localhost:3306/mybatis?useSSL=true&useUnicode=true&characterEnc
 1. 最后读取作为方法参数传递的属性，并覆盖之前读取过的同名属性
 
 因此，通过方法参数传递的属性具有最高优先级，resource/url 属性中指定的配置文件次之，最低优先级的则是 properties 元素中指定的属性。
-<a name="jxbp6"></a>
 ## 设置(settings)
 这是 MyBatis 中极为重要的调整设置，它们会改变 MyBatis 的运行时行为
-<a name="Zbqf8"></a>
 ### 常用设置
 ```xml
 <!--Mybatis调整设置 会改变Mybatis的运行时行为-->
@@ -726,42 +710,43 @@ url=jdbc:mysql://localhost:3306/mybatis?useSSL=true&useUnicode=true&characterEnc
 
     </settings>
 ```
-<a name="b3VAm"></a>
 ### 官方文档设置
 | 设置名 | 描述 | 有效值 | 默认值 |
 | --- | --- | --- | --- |
-| cacheEnabled | 全局性地开启或关闭所有映射器配置文件中已配置的任何缓存。 | true | false | true |
-| lazyLoadingEnabled | 延迟加载的全局开关。当开启时，所有关联对象都会延迟加载。 特定关联关系中可通过设置 fetchType 属性来覆盖该项的开关状态。 | true | false | false |
-| aggressiveLazyLoading | 开启时，任一方法的调用都会加载该对象的所有延迟加载属性。 否则，每个延迟加载属性会按需加载（参考 lazyLoadTriggerMethods)。 | true | false | false （在 3.4.1 及之前的版本中默认为 true） |
-| multipleResultSetsEnabled | 是否允许单个语句返回多结果集（需要数据库驱动支持）。 | true | false | true |
-| useColumnLabel | 使用列标签代替列名。实际表现依赖于数据库驱动，具体可参考数据库驱动的相关文档，或通过对比测试来观察。 | true | false | true |
-| useGeneratedKeys | 允许 JDBC 支持自动生成主键，需要数据库驱动支持。如果设置为 true，将强制使用自动生成主键。尽管一些数据库驱动不支持此特性，但仍可正常工作（如 Derby）。 | true | false | False |
+| cacheEnabled | 全局性地开启或关闭所有映射器配置文件中已配置的任何缓存。 | true &#124; false | true |
+| lazyLoadingEnabled | 延迟加载的全局开关。当开启时，所有关联对象都会延迟加载。 特定关联关系中可通过设置 fetchType 属性来覆盖该项的开关状态。 | true &#124; false | false |
+| aggressiveLazyLoading | 开启时，任一方法的调用都会加载该对象的所有延迟加载属性。 否则，每个延迟加载属性会按需加载（参考 lazyLoadTriggerMethods)。 | true &#124; false | false （在 3.4.1 及之前的版本中默认为 true） |
+| multipleResultSetsEnabled | 是否允许单个语句返回多结果集（需要数据库驱动支持）。 | true &#124; false | true |
+| useColumnLabel | 使用列标签代替列名。实际表现依赖于数据库驱动，具体可参考数据库驱动的相关文档，或通过对比测试来观察。 | true &#124; false | true |
+| useGeneratedKeys | 允许 JDBC 支持自动生成主键，需要数据库驱动支持。如果设置为 true，将强制使用自动生成主键。尽管一些数据库驱动不支持此特性，但仍可正常工作（如 Derby）。 | true &#124; false | False |
 | autoMappingBehavior | 指定 MyBatis 应如何自动映射列到字段或属性。 NONE 表示关闭自动映射；PARTIAL 只会自动映射没有定义嵌套结果映射的字段。 FULL 会自动映射任何复杂的结果集（无论是否嵌套）。 | NONE, PARTIAL, FULL | PARTIAL |
-| autoMappingUnknownColumnBehavior | 指定发现自动映射目标未知列（或未知属性类型）的行为。<br />- NONE: 不做任何反应<br />- WARNING: 输出警告日志（'org.apache.ibatis.session.AutoMappingUnknownColumnBehavior' 的日志等级必须设置为 WARN）<br />- FAILING: 映射失败 (抛出 SqlSessionException)<br /> | NONE, WARNING, FAILING | NONE |
+| autoMappingUnknownColumnBehavior | 指定发现自动映射目标未知列（或未知属性类型）的行为。
+- NONE: 不做任何反应
+- WARNING: 输出警告日志（'org.apache.ibatis.session.AutoMappingUnknownColumnBehavior' 的日志等级必须设置为 WARN）
+- FAILING: 映射失败 (抛出 SqlSessionException)
+ | NONE, WARNING, FAILING | NONE |
 | defaultExecutorType | 配置默认的执行器。SIMPLE 就是普通的执行器；REUSE 执行器会重用预处理语句（PreparedStatement）； BATCH 执行器不仅重用语句还会执行批量更新。 | SIMPLE REUSE BATCH | SIMPLE |
 | defaultStatementTimeout | 设置超时时间，它决定数据库驱动等待数据库响应的秒数。 | 任意正整数 | 未设置 (null) |
 | defaultFetchSize | 为驱动的结果集获取数量（fetchSize）设置一个建议值。此参数只可以在查询设置中被覆盖。 | 任意正整数 | 未设置 (null) |
-| defaultResultSetType | 指定语句默认的滚动策略。（新增于 3.5.2） | FORWARD_ONLY | SCROLL_SENSITIVE | SCROLL_INSENSITIVE | DEFAULT（等同于未设置） | 未设置 (null) |
-| safeRowBoundsEnabled | 是否允许在嵌套语句中使用分页（RowBounds）。如果允许使用则设置为 false。 | true | false | False |
-| safeResultHandlerEnabled | 是否允许在嵌套语句中使用结果处理器（ResultHandler）。如果允许使用则设置为 false。 | true | false | True |
-| mapUnderscoreToCamelCase | 是否开启驼峰命名自动映射，即从经典数据库列名 A_COLUMN 映射到经典 Java 属性名 aColumn。 | true | false | False |
-| localCacheScope | MyBatis 利用本地缓存机制（Local Cache）防止循环引用和加速重复的嵌套查询。 默认值为 SESSION，会缓存一个会话中执行的所有查询。 若设置值为 STATEMENT，本地缓存将仅用于执行语句，对相同 SqlSession 的不同查询将不会进行缓存。 | SESSION | STATEMENT | SESSION |
+| defaultResultSetType | 指定语句默认的滚动策略。（新增于 3.5.2） | FORWARD_ONLY &#124; SCROLL_SENSITIVE &#124; SCROLL_INSENSITIVE &#124; DEFAULT（等同于未设置） | 未设置 (null) |
+| safeRowBoundsEnabled | 是否允许在嵌套语句中使用分页（RowBounds）。如果允许使用则设置为 false。 | true &#124; false | False |
+| safeResultHandlerEnabled | 是否允许在嵌套语句中使用结果处理器（ResultHandler）。如果允许使用则设置为 false。 | true &#124; false | True |
+| mapUnderscoreToCamelCase | 是否开启驼峰命名自动映射，即从经典数据库列名 A_COLUMN 映射到经典 Java 属性名 aColumn。 | true &#124; false | False |
+| localCacheScope | MyBatis 利用本地缓存机制（Local Cache）防止循环引用和加速重复的嵌套查询。 默认值为 SESSION，会缓存一个会话中执行的所有查询。 若设置值为 STATEMENT，本地缓存将仅用于执行语句，对相同 SqlSession 的不同查询将不会进行缓存。 | SESSION &#124; STATEMENT | SESSION |
 | jdbcTypeForNull | 当没有为参数指定特定的 JDBC 类型时，空值的默认 JDBC 类型。 某些数据库驱动需要指定列的 JDBC 类型，多数情况直接用一般类型即可，比如 NULL、VARCHAR 或 OTHER。 | JdbcType 常量，常用值：NULL、VARCHAR 或 OTHER。 | OTHER |
 | lazyLoadTriggerMethods | 指定对象的哪些方法触发一次延迟加载。 | 用逗号分隔的方法列表。 | equals,clone,hashCode,toString |
 | defaultScriptingLanguage | 指定动态 SQL 生成使用的默认脚本语言。 | 一个类型别名或全限定类名。 | org.apache.ibatis.scripting.xmltags.XMLLanguageDriver |
 | defaultEnumTypeHandler | 指定 Enum 使用的默认 TypeHandler 。（新增于 3.4.5） | 一个类型别名或全限定类名。 | org.apache.ibatis.type.EnumTypeHandler |
-| callSettersOnNulls | 指定当结果集中值为 null 的时候是否调用映射对象的 setter（map 对象时为 put）方法，这在依赖于 Map.keySet() 或 null 值进行初始化时比较有用。注意基本类型（int、boolean 等）是不能设置成 null 的。 | true | false | false |
-| returnInstanceForEmptyRow | 当返回行的所有列都是空时，MyBatis默认返回 null。 当开启这个设置时，MyBatis会返回一个空实例。 请注意，它也适用于嵌套的结果集（如集合或关联）。（新增于 3.4.2） | true | false | false |
+| callSettersOnNulls | 指定当结果集中值为 null 的时候是否调用映射对象的 setter（map 对象时为 put）方法，这在依赖于 Map.keySet() 或 null 值进行初始化时比较有用。注意基本类型（int、boolean 等）是不能设置成 null 的。 | true &#124; false | false |
+| returnInstanceForEmptyRow | 当返回行的所有列都是空时，MyBatis默认返回 null。 当开启这个设置时，MyBatis会返回一个空实例。 请注意，它也适用于嵌套的结果集（如集合或关联）。（新增于 3.4.2） | true &#124; false | false |
 | logPrefix | 指定 MyBatis 增加到日志名称的前缀。 | 任何字符串 | 未设置 |
-| logImpl | 指定 MyBatis 所用日志的具体实现，未指定时将自动查找。 | SLF4J | LOG4J | LOG4J2 | JDK_LOGGING | COMMONS_LOGGING | STDOUT_LOGGING | NO_LOGGING | 未设置 |
-| proxyFactory | 指定 Mybatis 创建可延迟加载对象所用到的代理工具。 | CGLIB | JAVASSIST | JAVASSIST （MyBatis 3.3 以上） |
+| logImpl | 指定 MyBatis 所用日志的具体实现，未指定时将自动查找。 | SLF4J &#124; LOG4J &#124; LOG4J2 &#124; JDK_LOGGING &#124; COMMONS_LOGGING &#124; STDOUT_LOGGING &#124; NO_LOGGING | 未设置 |
+| proxyFactory | 指定 Mybatis 创建可延迟加载对象所用到的代理工具。 | CGLIB &#124; JAVASSIST | JAVASSIST （MyBatis 3.3 以上） |
 | vfsImpl | 指定 VFS 的实现 | 自定义 VFS 的实现的类全限定名，以逗号分隔。 | 未设置 |
-| useActualParamName | 允许使用方法签名中的名称作为语句参数名称。 为了使用该特性，你的项目必须采用 Java 8 编译，并且加上 -parameters 选项。（新增于 3.4.1） | true | false | true |
+| useActualParamName | 允许使用方法签名中的名称作为语句参数名称。 为了使用该特性，你的项目必须采用 Java 8 编译，并且加上 -parameters 选项。（新增于 3.4.1） | true &#124; false | true |
 | configurationFactory | 指定一个提供 Configuration 实例的类。 这个被返回的 Configuration 实例用来加载被反序列化对象的延迟加载属性值。 这个类必须包含一个签名为static Configuration getConfiguration() 的方法。（新增于 3.2.3） | 一个类型别名或完全限定类名。 | 未设置 |
 
-<a name="Ek9rf"></a>
 ## 类型别名(typeAliases)
-<a name="sDBA2"></a>
 ### 自定义别名
 类型别名可为 Java 类型设置一个缩写名字。 它仅用于 XML 配置，意在降低冗余的全限定类名书写
 ```xml
@@ -776,11 +761,11 @@ url=jdbc:mysql://localhost:3306/mybatis?useSSL=true&useUnicode=true&characterEnc
 </typeAliases>
 ```
 通常配置为扫描指定包，对包中的实体类添加注解起别名(虽然默认别名为小写，但写上较为直观)
-<a name="puzpy"></a>
 ### Java 类型内建的类型别名
 
 - 基本类型      int       _int    ......
-- <br />
+- 
+
 | 别名 | 映射的类型 |
 | --- | --- |
 | _byte | byte |
@@ -811,10 +796,8 @@ url=jdbc:mysql://localhost:3306/mybatis?useSSL=true&useUnicode=true&characterEnc
 | collection | Collection |
 | iterator | Iterator |
 
-<a name="Mbrdt"></a>
 ## 环境配置(environments)
 可以配置多组环境，但每个 SqlSessionFactory 实例只能选择一种环境
-<a name="LGB1a"></a>
 ### 配置环境
 ```xml
 <!--连接数据库环境-->
@@ -849,7 +832,6 @@ url=jdbc:mysql://localhost:3306/mybatis?useSSL=true&useUnicode=true&characterEnc
 
     </environments>
 ```
-<a name="PZUXu"></a>
 ### 事务管理器
 在 MyBatis 中有两种类型的事务管理器（也就是 type="[JDBC|MANAGED]"）
 
@@ -857,9 +839,9 @@ url=jdbc:mysql://localhost:3306/mybatis?useSSL=true&useUnicode=true&characterEnc
 - MANAGED – 这个配置几乎没做什么。它从不提交或回滚一个连接，而是让容器来管理事务的整个生命周期（比如 JEE 应用服务器的上下文）。 默认情况下它会关闭连接。然而一些容器并不希望连接被关闭，因此需要将 closeConnection 属性设置为 false 来阻止默认的关闭行为。例如:<transactionManager type="MANAGED">   <property name="closeConnection" value="false"/> </transactionManager>
 
 如果你正在使用 Spring + MyBatis，则没有必要配置事务管理器，因为 Spring 模块会使用自带的管理器来覆盖前面的配置。
-<a name="Apkp0"></a>
 ### **数据源（dataSource）**
-有三种内建的数据源类型（也就是 type="[UNPOOLED|POOLED|JNDI]"）<br />**UNPOOLED**– 这个数据源的实现会每次请求时打开和关闭连接。虽然有点慢，但对那些数据库连接可用性要求不高的简单应用程序来说，是一个很好的选择。 性能表现则依赖于使用的数据库，对某些数据库来说，使用连接池并不重要，这个配置就很适合这种情形。UNPOOLED 类型的数据源仅仅需要配置以下 5 种属性：
+有三种内建的数据源类型（也就是 type="[UNPOOLED|POOLED|JNDI]"）
+**UNPOOLED**– 这个数据源的实现会每次请求时打开和关闭连接。虽然有点慢，但对那些数据库连接可用性要求不高的简单应用程序来说，是一个很好的选择。 性能表现则依赖于使用的数据库，对某些数据库来说，使用连接池并不重要，这个配置就很适合这种情形。UNPOOLED 类型的数据源仅仅需要配置以下 5 种属性：
 
 - driver – 这是 JDBC 驱动的 Java 类全限定名（并不是 JDBC 驱动中可能包含的数据源类）。
 - url – 这是数据库的 JDBC URL 地址。
@@ -872,7 +854,9 @@ url=jdbc:mysql://localhost:3306/mybatis?useSSL=true&useUnicode=true&characterEnc
 
 - driver.encoding=UTF8
 
-这将通过 DriverManager.getConnection(url, driverProperties) 方法传递值为 UTF8 的 encoding 属性给数据库驱动。<br />**POOLED**– 这种数据源的实现利用“池”的概念将 JDBC 连接对象组织起来，避免了创建新的连接实例时所必需的初始化和认证时间。 这种处理方式很流行，能使并发 Web 应用快速响应请求。<br />除了上述提到 UNPOOLED 下的属性外，还有更多属性用来配置 POOLED 的数据源：
+这将通过 DriverManager.getConnection(url, driverProperties) 方法传递值为 UTF8 的 encoding 属性给数据库驱动。
+**POOLED**– 这种数据源的实现利用“池”的概念将 JDBC 连接对象组织起来，避免了创建新的连接实例时所必需的初始化和认证时间。 这种处理方式很流行，能使并发 Web 应用快速响应请求。
+除了上述提到 UNPOOLED 下的属性外，还有更多属性用来配置 POOLED 的数据源：
 
 - poolMaximumActiveConnections – 在任意时间可存在的活动（正在使用）连接数量，默认值：10
 - poolMaximumIdleConnections – 任意时间可能存在的空闲连接数。
@@ -893,9 +877,7 @@ url=jdbc:mysql://localhost:3306/mybatis?useSSL=true&useUnicode=true&characterEnc
 - env.encoding=UTF8
 
 这就会在 InitialContext 实例化时往它的构造方法传递值为 UTF8 的 encoding 属性
-<a name="R9o0l"></a>
 ## 数据库厂商标识(databaseIdProvider)
-<a name="R8cGj"></a>
 ### 配置
 ```xml
 <!--   
@@ -907,7 +889,6 @@ url=jdbc:mysql://localhost:3306/mybatis?useSSL=true&useUnicode=true&characterEnc
      <property name="Oracle" value="oracle"/>
 </databaseIdProvider>
 ```
-<a name="lOayi"></a>
 ### 使用
 ```xml
 <select id="getUserList" resultMap="userMap" databaseId="Mysql">
@@ -915,10 +896,8 @@ url=jdbc:mysql://localhost:3306/mybatis?useSSL=true&useUnicode=true&characterEnc
       from mybatis.user;
 </select>
 ```
-<a name="GDOdX"></a>
 ## 映射器(mappers)
 既然 MyBatis 的行为已经由上述元素配置完了，我们现在就要来定义 SQL 映射语句了。 但首先，我们需要告诉 MyBatis 到哪里去找到这些语句。 在自动查找资源方面，Java 并没有提供一个很好的解决方案，所以最好的办法是直接告诉 MyBatis 到哪里去找映射文件。 你可以使用相对于类路径的资源引用，或完全限定资源定位符（包括 file:/// 形式的 URL），或类名和包名等
-<a name="VyBIj"></a>
 ### 配置
 ```xml
 <!--映射器 mappers    告诉 MyBatis 到哪里去找映射文件 -->
@@ -936,10 +915,8 @@ url=jdbc:mysql://localhost:3306/mybatis?useSSL=true&useUnicode=true&characterEnc
 </mappers>
 ```
 通常经常采用扫描包(将包内的映射器接口全部注册为映射器)
-<a name="S5RT0"></a>
 # XML映射器
 MyBatis 的真正强大在于它的语句映射，这是它的魔力所在。MyBatis 致力于减少使用成本，让用户能更专注于 SQL 代码
-<a name="HCuHd"></a>
 ## xml文件结构
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -956,9 +933,7 @@ MyBatis 的真正强大在于它的语句映射，这是它的魔力所在。MyB
 </mapper>
 
 ```
-<a name="oJTv0"></a>
 ## 参数
-<a name="USirZ"></a>
 ### select
 ```xml
 <select
@@ -993,7 +968,6 @@ MyBatis 的真正强大在于它的语句映射，这是它的魔力所在。MyB
 | resultOrdered | 这个设置仅针对嵌套结果 select 语句：如果为 true，将会假设包含了嵌套结果集或是分组，当返回一个主结果行时，就不会产生对前面结果集的引用。 这就使得在获取嵌套结果集的时候不至于内存不够用。默认值：false。 |
 | resultSets | 这个设置仅适用于多结果集的情况。它将列出语句执行后返回的结果集并赋予每个结果集一个名称，多个名称之间以逗号分隔 |
 
-<a name="sYhuC"></a>
 ### update
 ```xml
 <insert
@@ -1023,17 +997,15 @@ MyBatis 的真正强大在于它的语句映射，这是它的魔力所在。MyB
   timeout="20"
 >
 ```
-<a name="avVJW"></a>
 ### SQL参数
-<a name="iwrNY"></a>
 #### ${}与#{}
 其中 ${column} 会被直接替换，而 #{value} 会使用 ? 预处理
 ```xml
 @Select("select * from user where ${column} = #{value}")
 User findByColumn(@Param("column") String column, @Param("value") String value);
 ```
-注意：<br />      用这种方式接受用户的输入，并用作语句参数是不安全的，会导致潜在的 SQL 注入攻击。因此，要么不允许用户输入这些字段，要么自行转义并检验这些参数
-<a name="DAwz0"></a>
+注意：
+      用这种方式接受用户的输入，并用作语句参数是不安全的，会导致潜在的 SQL 注入攻击。因此，要么不允许用户输入这些字段，要么自行转义并检验这些参数
 #### 参数类型(parameterType)
 简单参数
 ```xml
@@ -1059,9 +1031,7 @@ User findByColumn(@Param("column") String column, @Param("value") String value);
 ```xml
 #{height,javaType=double,jdbcType=NUMERIC,numericScale=2}
 ```
-<a name="BzTzk"></a>
 ## 结果映射(resultMap)
-<a name="NUkX2"></a>
 ### 简单映射
 只是简单地将所有的列映射到 HashMap 的键上
 ```xml
@@ -1071,9 +1041,7 @@ User findByColumn(@Param("column") String column, @Param("value") String value);
   where id = #{id}
 </select>
 ```
-<a name="TkuMn"></a>
 ### JavaBean(POJO)
-<a name="D9Qu9"></a>
 #### 普通情况
 ```java
 package pojo;
@@ -1109,7 +1077,6 @@ public class User {
 </select>
 ```
 MyBatis 会在幕后自动创建一个 ResultMap，再根据属性名来映射列到 JavaBean 的属性上
-<a name="IsPmh"></a>
 #### 列名和属性名称不匹配(起别名)
 ```xml
 //假设数据库中字段为password
@@ -1122,7 +1089,6 @@ MyBatis 会在幕后自动创建一个 ResultMap，再根据属性名来映射�
   where id = #{id}
 </select>
 ```
-<a name="REHA2"></a>
 #### 列名和属性名称不匹配(配置ResultMap)
 配置ResultMap
 ```xml
@@ -1145,7 +1111,6 @@ MyBatis 会在幕后自动创建一个 ResultMap，再根据属性名来映射�
         where id = #{id};
 </select>
 ```
-<a name="E2VAe"></a>
 ### 高级映射
 编写student实体类  (多个学生对一个老师)
 ```java
@@ -1200,7 +1165,6 @@ public class teacher {
 }
 
 ```
-<a name="WTWa3"></a>
 ####  多对一
 编写Mapper接口
 ```java
@@ -1229,7 +1193,8 @@ public interface studentMapper {
 
 }
 ```
-编写XML配置文件<br /><!--结果 嵌套处理-->
+编写XML配置文件
+<!--结果 嵌套处理-->
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
@@ -1304,7 +1269,6 @@ public interface studentMapper {
 </mapper>
 
 ```
-<a name="DfrfS"></a>
 #### 一对多
 编写Mapper接口
 ```java
@@ -1333,7 +1297,8 @@ public interface teacherMapper {
 }
 
 ```
-编写XML配置文件<br /><!--结果 嵌套处理-->
+编写XML配置文件
+<!--结果 嵌套处理-->
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
@@ -1405,9 +1370,7 @@ public interface teacherMapper {
 
 </mapper>
 ```
-<a name="I5631"></a>
 ### 自动映射
-<a name="6VMjD"></a>
 #### 基本使用(提供了结果映射后，自动映射也能工作)
 数据库(下划线)------>java(驼峰命名法)
 ```xml
@@ -1446,16 +1409,13 @@ xml配置文件中SQL语句
 </select>
 ```
 
-
-<a name="OzqYl"></a>
 #### 三种映射等级
 
 - NONE - 禁用自动映射。仅对手动映射的属性进行映射
 - PARTIAL - 对除在内部定义了嵌套结果映射（也就是连接的属性）以外的属性进行映射 默认
 - FULL - 自动映射所有属性。
 
-
-<br />FULL的弊端
+FULL的弊端
 ```xml
 <select id="selectBlog" resultMap="blogResult">
   select
@@ -1474,8 +1434,8 @@ xml配置文件中SQL语句
   <result property="username" column="author_username"/>
 </resultMap>
 ```
-_Blog_ 和 _Author_ 均将被自动映射。 _Author_ 有 _id_ 属性，在 ResultSet 中也有 _id_ 的列， Author 的 id 将填入 Blog 的 id<br />​<br />
-<a name="Fp9Cn"></a>
+_Blog_ 和 _Author_ 均将被自动映射。 _Author_ 有 _id_ 属性，在 ResultSet 中也有 _id_ 的列， Author 的 id 将填入 Blog 的 id
+
 #### 启动和禁用自动映射
 结果映射上设置 autoMapping 属性
 ```xml
@@ -1484,18 +1444,14 @@ _Blog_ 和 _Author_ 均将被自动映射。 _Author_ 有 _id_ 属性，�
 </resultMap>
 ```
 
-
-<a name="vfEDg"></a>
 ## sql片段
 用来定义可重用的 SQL 代码片段，以便在其它语句中使用，参数可以静态或者动态确定，并且可以在不同的include中定义不同的参数值
-<a name="bfsZw"></a>
 ### 编写sql片段  
 ```xml
 <sql id="userColumns"> 
   ${alias}.id,${alias}.username,${alias}.password
 </sql>
 ```
-<a name="QFYot"></a>
 ### 引用sql片段
 ```xml
 <select id="selectUsers" resultType="map">
@@ -1511,7 +1467,6 @@ _Blog_ 和 _Author_ 均将被自动映射。 _Author_ 有 _id_ 属性，�
     cross join some_table t2
 </select>
 ```
-<a name="uXOo2"></a>
 ### sql片段嵌套
 ```xml
 <sql id="sometable">
@@ -1532,11 +1487,9 @@ _Blog_ 和 _Author_ 均将被自动映射。 _Author_ 有 _id_ 属性，�
   </include>
 </select>
 ```
-​<br />
-<a name="EvX5O"></a>
+
 ## 动态sql
 避免sql语句拼接问题
-<a name="Iisdt"></a>
 ### if
 ```xml
 <!--
@@ -1556,7 +1509,6 @@ sql片段抽取公用部分 复用(最好基于单表查询  不要存在where�
    <include refid="if-title-author"/>   <!--引入sql片段-->
 </select>
 ```
-<a name="KR71v"></a>
 ### choose、when、otherwise
 ```xml
 <!--
@@ -1580,9 +1532,7 @@ sql片段抽取公用部分 复用(最好基于单表查询  不要存在where�
          </choose>
 </select>
 ```
-<a name="yeo2y"></a>
 ### where、trim、set
-<a name="VV0vm"></a>
 #### where
 ```xml
 <select id="getBlogIF" parameterType="map" resultType="Blog">
@@ -1592,7 +1542,6 @@ sql片段抽取公用部分 复用(最好基于单表查询  不要存在where�
    </where>
 </select>
 ```
-<a name="uWTj6"></a>
 #### set
 ```xml
 <!--
@@ -1607,7 +1556,6 @@ sql片段抽取公用部分 复用(最好基于单表查询  不要存在where�
    where id=#{id}
 </update>
 ```
-<a name="nBcZE"></a>
 #### trim
 ```xml
 <trim prefix="WHERE" prefixOverrides="AND |OR ">
@@ -1617,7 +1565,6 @@ sql片段抽取公用部分 复用(最好基于单表查询  不要存在where�
   ...sql代码
 </trim>
 ```
-<a name="j5ws8"></a>
 ### foreach
 ```xml
 <!--
@@ -1634,9 +1581,7 @@ Foreach   collection:传入数组或者集合  item:为一项   open   close  se
    </where>
 </select>
 ```
-<a name="CK4kW"></a>
 # 缓存
-<a name="c4FXW"></a>
 ## 默认缓存
 在 SQL 映射文件中配置以下代码
 ```xml
@@ -1650,8 +1595,9 @@ eviction：
 - SOFT – 软引用：基于垃圾回收器状态和软引用规则移除对象。
 - WEAK – 弱引用：更积极地基于垃圾收集器状态和弱引用规则移除对象。
 
-flushInterval：（刷新间隔）属性可以被设置为任意的正整数，设置的值应该是一个以毫秒为单位的合理时间量。 默认情况是不设置，也就是没有刷新间隔，缓存仅仅会在调用语句时刷新。<br />size（引用数目）：属性可以被设置为任意正整数，要注意欲缓存对象的大小和运行环境中可用的内存资源。默认值是 1024。<br />readOnly（只读）：属性可以被设置为 true 或 false。只读的缓存会给所有调用者返回缓存对象的相同实例。 因此这些对象不能被修改。这就提供了可观的性能提升。而可读写的缓存会（通过序列化）返回缓存对象的拷贝。 速度上会慢一些，但是更安全，因此默认值是 false。
-<a name="qBWjg"></a>
+flushInterval：（刷新间隔）属性可以被设置为任意的正整数，设置的值应该是一个以毫秒为单位的合理时间量。 默认情况是不设置，也就是没有刷新间隔，缓存仅仅会在调用语句时刷新。
+size（引用数目）：属性可以被设置为任意正整数，要注意欲缓存对象的大小和运行环境中可用的内存资源。默认值是 1024。
+readOnly（只读）：属性可以被设置为 true 或 false。只读的缓存会给所有调用者返回缓存对象的相同实例。 因此这些对象不能被修改。这就提供了可观的性能提升。而可读写的缓存会（通过序列化）返回缓存对象的拷贝。 速度上会慢一些，但是更安全，因此默认值是 false。
 ## 自定义缓存
 在SQL 映射文件中配置以下代码
 ```xml
@@ -1708,12 +1654,14 @@ flushInterval：（刷新间隔）属性可以被设置为任意的正整数，�
      -->
 </ehcache>
 ```
-<a name="Q144O"></a>
 ## 缓存
 _   用户------>二级缓存------>一级缓存------>数据库_
-<a name="Aliiz"></a>
 ### 一级缓存
-_sqlSession------>(一级缓存)_<br />* 一级缓存  (默认)  存在于sqlSession的创建与关闭之间  避免与数据库重复连接查询<br />* 查询完成数据之后，数据存在于当前会话的一级缓存中   会话关闭，数据消失<br />* 增删改操作会使缓存失效<br />* sqlSession的clearCache方法清除缓存
+_sqlSession------>(一级缓存)_
+* 一级缓存  (默认)  存在于sqlSession的创建与关闭之间  避免与数据库重复连接查询
+* 查询完成数据之后，数据存在于当前会话的一级缓存中   会话关闭，数据消失
+* 增删改操作会使缓存失效
+* sqlSession的clearCache方法清除缓存
 ```java
     @Test
     public void T1() {
@@ -1753,9 +1701,12 @@ _sqlSession------>(一级缓存)_<br />* 一级缓存  (默认)  存在于sqlSes
     }
 ```
 ![47c3f520bbaff93992a5c15ddc1b330.png](https://cdn.nlark.com/yuque/0/2022/png/23219042/1641117688598-471560aa-292b-4b1f-baa3-3efc5a265f8a.png#crop=0&crop=0&crop=1&crop=1&height=558&id=uaeae0d19&margin=%5Bobject%20Object%5D&name=47c3f520bbaff93992a5c15ddc1b330.png&originHeight=558&originWidth=1031&originalType=binary&ratio=1&rotation=0&showTitle=false&size=764620&status=done&style=none&title=&width=1031)
-<a name="RrDbV"></a>
 ### 二级缓存
-_Mapper------>(二级缓存)_<br />* 二级缓存  全局缓存 基于namespace级别 (同一个mapper下有效)<br />* 查询完成数据之后，数据存在于当前会话的一级缓存中 ------>转存 会话关闭，保存到二级缓存中<br />* 增删改操作会使缓存失效    (避免脏读) <br />* sqlSession的clearCache方法清除缓存
+_Mapper------>(二级缓存)_
+* 二级缓存  全局缓存 基于namespace级别 (同一个mapper下有效)
+* 查询完成数据之后，数据存在于当前会话的一级缓存中 ------>转存 会话关闭，保存到二级缓存中
+* 增删改操作会使缓存失效    (避免脏读) 
+* sqlSession的clearCache方法清除缓存
 ```java
     @Test
     public void T2() {
@@ -1792,9 +1743,7 @@ _Mapper------>(二级缓存)_<br />* 二级缓存  全局缓存 基于namespace�
     }
 ```
 ![45951e7ef5d92d9588f3b631233ffe0.png](https://cdn.nlark.com/yuque/0/2022/png/23219042/1641117957659-4197f39b-c6f7-4ac8-927c-6c0cc6d1e43b.png#crop=0&crop=0&crop=1&crop=1&height=611&id=u8b24d17b&margin=%5Bobject%20Object%5D&name=45951e7ef5d92d9588f3b631233ffe0.png&originHeight=611&originWidth=1048&originalType=binary&ratio=1&rotation=0&showTitle=false&size=856681&status=done&style=none&title=&width=1048)
-<a name="mWzsi"></a>
 # 日志
-<a name="zW0C4"></a>
 ## 简介
 Mybatis 通过使用内置的日志工厂提供日志功能。内置日志工厂将会把日志工作委托给下面的实现之一：
 
@@ -1805,9 +1754,7 @@ Mybatis 通过使用内置的日志工厂提供日志功能。内置日志工厂
 - JDK logging
 
 MyBatis 内置日志工厂会基于运行时检测信息选择日志委托实现。它会（按上面罗列的顺序）使用第一个查找到的实现。当没有找到这些实现时，将会禁用日志功能。
-<a name="wj20p"></a>
 ## Log4j
-<a name="tuJa5"></a>
 ### 添加Log4j-jar包
 ```xml
         <!-- log4日志工厂jar包-->
@@ -1817,7 +1764,6 @@ MyBatis 内置日志工厂会基于运行时检测信息选择日志委托实现
             <version>1.2.17</version>
         </dependency>
 ```
-<a name="Dkc3z"></a>
 ### 添加setting
 ```xml
         <!--STDOUT_LOGGING标准日志输出-->
@@ -1825,7 +1771,6 @@ MyBatis 内置日志工厂会基于运行时检测信息选择日志委托实现
         <!--LOG4J-->
         <setting name="logImpl" value="LOG4J"/>
 ```
-<a name="xTMrG"></a>
 ### 配置Log4j
 ```properties
 #将等级为DEBUG的日志信息输出到console和file这两个目的地，console和file的定义在下面的代码
@@ -1857,7 +1802,6 @@ log4j.logger.java.sql.ResultSet=DEBUG
 log4j.logger.java.sql.PreparedStatement=DEBUG
 ```
 
-<br />
-<br />
-<br />
+
+
 
